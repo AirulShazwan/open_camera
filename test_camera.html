@@ -56,8 +56,10 @@
 
         openCameraButton.addEventListener('click', async () => {
             try {
-                // Request camera access
-                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                // Request back camera access
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { facingMode: { exact: "environment" } } 
+                });
                 video.srcObject = stream;
             } catch (error) {
                 alert('Unable to access the camera: ' + error.message);
